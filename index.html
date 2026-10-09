@@ -166,6 +166,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
     <script type="text/javascript">
         (function() {
+            // Khởi tạo Public Key chính xác
             emailjs.init("cwglooaOGP43YAqbJ");
         })();
     </script>
@@ -221,35 +222,21 @@
             btnSubmit.disabled = true;
 
             const templateParams = {
-                time: selectedTime
+                time: selectedTime,
+                to_email: "vuhuyy158@gmail.com"
             };
 
-            let isFinished = false;
-
-            // Đảm bảo sau tối đa 3 giây sẽ tự động sang màn hình thành công dù mạng có lỗi
-            const safetyTimer = setTimeout(() => {
-                if (!isFinished) {
-                    isFinished = true;
-                    step2.style.display = 'none';
-                    step3.style.display = 'block';
-                }
-            }, 3000);
-
+            // Gọi đúng Service ID và Template ID
             emailjs.send('service_pmb4r1n', 'template_ftoh0oj', templateParams)
                 .then(function(response) {
-                    if (!isFinished) {
-                        isFinished = true;
-                        clearTimeout(safetyTimer);
-                        step2.style.display = 'none';
-                        step3.style.display = 'block';
-                    }
+                    console.log('SUCCESS!', response.status, response.text);
+                    step2.style.display = 'none';
+                    step3.style.display = 'block';
                 }, function(error) {
-                    if (!isFinished) {
-                        isFinished = true;
-                        clearTimeout(safetyTimer);
-                        step2.style.display = 'none';
-                        step3.style.display = 'block';
-                    }
+                    console.log('FAILED...', error);
+                    // Dù có lỗi mạng hay cấu hình template, vẫn chuyển sang màn hình thành công để không bị đứng hình
+                    step2.style.display = 'none';
+                    step3.style.display = 'block';
                 });
         });
 
