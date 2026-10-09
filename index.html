@@ -164,23 +164,7 @@
 
     <script>
         const BOT_TOKEN = "8832965220:AAeBdBQyyzMKZULek59CDhzPalq81IiuQrM";
-        let CHAT_ID = "";
-
-        // Tự động tìm Chat ID của bạn từ Telegram Bot khi vừa mở trang web
-        async function fetchChatId() {
-            try {
-                let response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getUpdates`);
-                let data = await response.json();
-                if (data.ok && data.result.length > 0) {
-                    // Lấy Chat ID của tin nhắn gần nhất bạn vừa gửi cho bot
-                    CHAT_ID = data.result[data.result.length - 1].message.chat.id;
-                    console.log("Đã lấy được Chat ID:", CHAT_ID);
-                }
-            } catch (e) {
-                console.log("Lỗi tự động lấy Chat ID:", e);
-            }
-        }
-        fetchChatId();
+        const CHAT_ID = "ĐIỀN_CHAT_ID_CỦA_BẠN_VÀO_ĐÂY"; // Thay dãy số ID bạn vừa lấy từ @userinfobot vào đây
 
         const btnNo = document.getElementById('btnNo');
         const btnYes = document.getElementById('btnYes');
@@ -233,26 +217,24 @@
 
             const messageText = `🎉 Em iu đã chốt lịch hẹn vào lúc: ${selectedTime} Chủ Nhật này nhé! 💕`;
 
-            if (CHAT_ID) {
-                try {
-                    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            chat_id: CHAT_ID,
-                            text: messageText
-                        })
-                    });
-                } catch (err) {
-                    console.log("Gửi Telegram lỗi:", err);
-                }
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: messageText
+                    })
+                });
+            } catch (err) {
+                console.log("Gửi Telegram lỗi:", err);
             }
 
             // Chuyển sang màn hình thành công mượt mà
             setTimeout(() => {
                 step2.style.display = 'none';
                 step3.style.display = 'block';
-            }, 800);
+            }, 600);
         });
 
         function createHearts() {
