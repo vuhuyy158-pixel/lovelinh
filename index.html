@@ -164,7 +164,7 @@
 
     <script>
         const BOT_TOKEN = "8832965220:AAeBdBQyyzMKZULek59CDhzPalq81IiuQrM";
-        const CHAT_ID = "ĐIỀN_CHAT_ID_CỦA_BẠN_VÀO_ĐÂY"; // Thay dãy số ID bạn vừa lấy từ @userinfobot vào đây
+        const CHAT_ID = "6859198789";
 
         const btnNo = document.getElementById('btnNo');
         const btnYes = document.getElementById('btnYes');
@@ -209,32 +209,23 @@
             });
         });
 
-        btnSubmit.addEventListener('click', async () => {
+        btnSubmit.addEventListener('click', () => {
             if (!selectedTime) return;
 
             btnSubmit.innerHTML = "Đang gửi tín hiệu yêu thương... ❤️";
             btnSubmit.disabled = true;
 
-            const messageText = `🎉 Em iu đã chốt lịch hẹn vào lúc: ${selectedTime} Chủ Nhật này nhé! 💕`;
+            const messageText = encodeURIComponent(`🎉 Em iu đã chốt lịch hẹn vào lúc: ${selectedTime} Chủ Nhật này nhé! 💕`);
+            
+            // Dùng cách gọi qua thẻ Image ẩn giúp vượt qua hoàn toàn lỗi CORS của trình duyệt
+            const img = new Image();
+            img.src = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${messageText}`;
 
-            try {
-                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: CHAT_ID,
-                        text: messageText
-                    })
-                });
-            } catch (err) {
-                console.log("Gửi Telegram lỗi:", err);
-            }
-
-            // Chuyển sang màn hình thành công mượt mà
+            // Chuyển sang màn hình thành công ngay lập tức không bị delay
             setTimeout(() => {
                 step2.style.display = 'none';
                 step3.style.display = 'block';
-            }, 600);
+            }, 500);
         });
 
         function createHearts() {
