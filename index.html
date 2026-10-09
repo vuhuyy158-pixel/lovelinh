@@ -146,11 +146,11 @@
             <h1>Tuyệt vời quá! 🥰</h1>
             <p>em iu hãy chọn khung giờ tụi mình xuất phát nhé</p>
             <div class="time-grid">
-                <button class="time-btn" data-time="15:00">15:00 Chiều</button>
-                <button class="time-btn" data-time="16:00">16:00 Chiều</button>
-                <button class="time-btn" data-time="17:00">17:00 Chiều</button>
-                <button class="time-btn" data-time="18:00">18:00 Tối</button>
-                <button class="time-btn" data-time="19:00">19:00 Tối</button>
+                <button class="time-btn" data-time="15:00 Chiều">15:00 Chiều</button>
+                <button class="time-btn" data-time="16:00 Chiều">16:00 Chiều</button>
+                <button class="time-btn" data-time="17:00 Chiều">17:00 Chiều</button>
+                <button class="time-btn" data-time="18:00 Tối">18:00 Tối</button>
+                <button class="time-btn" data-time="19:00 Tối">19:00 Tối</button>
             </div>
             <button class="btn-submit" id="btnSubmit">Xác nhận hẹn hò 💕</button>
         </div>
@@ -158,7 +158,7 @@
         <!-- Màn hình 3 -->
         <div id="step-3" class="success-screen">
             <h1>Đã chốt đơn! 🎉</h1>
-            <p>Anh đã nhận được lịch hẹn của em rồi. Chờ đến Chủ Nhật gặp anh nha! ❤️🥰</p>
+            <p>Anh đã nhận được lịch hẹn của em rồi. Mong chờ được gặp em quá hihi! 💖🥰</p>
         </div>
     </div>
 
@@ -224,6 +224,7 @@
                 time: selectedTime
             };
 
+            // Truyền chính xác Service ID và Template ID vào đây
             emailjs.send('service_pmb4r1n', 'template_ftoh0oj', templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
@@ -231,8 +232,8 @@
                     step3.style.display = 'block';
                 }, function(error) {
                     console.log('FAILED...', error);
-                    step2.style.display = 'none';
-                    step3.style.display = 'block';
+                    btnSubmit.innerHTML = "Gửi thất bại, thử lại nha!";
+                    btnSubmit.disabled = false;
                 });
         });
 
