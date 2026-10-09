@@ -6,12 +6,7 @@
     <title>Gửi Em Iu ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Quicksand', sans-serif;
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
@@ -22,7 +17,6 @@
             overflow: hidden;
             position: relative;
         }
-
         .container {
             background: rgba(255, 255, 255, 0.9);
             padding: 40px 30px;
@@ -35,21 +29,18 @@
             position: relative;
             backdrop-filter: blur(5px);
         }
-
         h1 {
             font-family: 'Dancing Script', cursive;
             color: #ff3366;
             font-size: 2.8rem;
             margin-bottom: 20px;
         }
-
         p {
             font-size: 1.2rem;
             color: #444;
             margin-bottom: 30px;
             line-height: 1.5;
         }
-
         .btn-group {
             display: flex;
             justify-content: center;
@@ -57,7 +48,6 @@
             position: relative;
             min-height: 60px;
         }
-
         .btn {
             padding: 12px 30px;
             font-size: 1.1rem;
@@ -68,18 +58,8 @@
             transition: transform 0.1s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-
-        .btn-yes {
-            background-color: #ff3366;
-            color: white;
-            z-index: 2;
-        }
-
-        .btn-yes:hover {
-            background-color: #e60039;
-            transform: scale(1.05);
-        }
-
+        .btn-yes { background-color: #ff3366; color: white; z-index: 2; }
+        .btn-yes:hover { background-color: #e60039; transform: scale(1.05); }
         .btn-no {
             background-color: #e0e0e0;
             color: #555;
@@ -89,20 +69,13 @@
             top: 0;
             transition: all 0.2s ease;
         }
-
-        /* Phần chọn giờ */
-        .time-section {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
+        .time-section { display: none; animation: fadeIn 0.5s ease-in-out; }
         .time-grid {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
             gap: 12px;
             margin-bottom: 20px;
         }
-
         .time-btn {
             background-color: #fff0f3;
             border: 2px solid #ffb6c1;
@@ -114,14 +87,12 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-
         .time-btn:hover, .time-btn.selected {
             background-color: #ff3366;
             color: white;
             border-color: #ff3366;
             transform: scale(1.03);
         }
-
         .btn-submit {
             background-color: #28a745;
             color: white;
@@ -136,27 +107,13 @@
             margin-top: 10px;
             box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
         }
-
-        .btn-submit:hover {
-            background-color: #218838;
-        }
-
-        /* Màn hình cảm ơn sau khi chọn xong */
-        .success-screen {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .success-screen h1 {
-            color: #28a745;
-        }
-
+        .btn-submit:hover { background-color: #218838; }
+        .success-screen { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .success-screen h1 { color: #28a745; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        /* Tim bay */
         .heart {
             position: absolute;
             color: #ff3366;
@@ -165,7 +122,6 @@
             z-index: 1;
             opacity: 0.7;
         }
-
         @keyframes flyUp {
             0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
             100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
@@ -175,7 +131,7 @@
 <body>
 
     <div class="container">
-        <!-- Màn hình 1: Chào & Hỏi -->
+        <!-- Màn hình 1 -->
         <div id="step-1">
             <h1>Gửi em iu của anh! ❤️</h1>
             <p>Chủ Nhật tuần này em có rảnh không, đi chơi với anh nha? 🥰</p>
@@ -185,10 +141,10 @@
             </div>
         </div>
 
-        <!-- Màn hình 2: Chọn khung giờ (15h - 19h) -->
+        <!-- Màn hình 2 -->
         <div id="step-2" class="time-section">
             <h1>Tuyệt vời quá! 🥰</h1>
-            <p>Em iu hãy chọn khung giờ tụi mình xuất phát nhé:</p>
+            <p>em iu hãy chọn khung giờ tụi mình xuất phát nhé</p>
             <div class="time-grid">
                 <button class="time-btn" data-time="15:00">15:00 Chiều</button>
                 <button class="time-btn" data-time="16:00">16:00 Chiều</button>
@@ -199,12 +155,20 @@
             <button class="btn-submit" id="btnSubmit">Xác nhận hẹn hò 💕</button>
         </div>
 
-        <!-- Màn hình 3: Cảm ơn (Ẩn hoàn toàn đường dẫn dashboard khỏi người yêu) -->
+        <!-- Màn hình 3 -->
         <div id="step-3" class="success-screen">
             <h1>Đã chốt đơn! 🎉</h1>
-            <p>Anh đã nhận được lịch hẹn của em rồi. Mong chờ được gặp em quá hihi! ❤️🥰</p>
+            <p>Anh đã nhận được lịch hẹn của em rồi. Chờ đến Chủ Nhật gặp anh nha! ❤️🥰</p>
         </div>
     </div>
+
+    <!-- Thư viện EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("cwglooaOGP43YAqbJ");
+        })();
+    </script>
 
     <script>
         const btnNo = document.getElementById('btnNo');
@@ -217,11 +181,9 @@
 
         let selectedTime = '';
 
-        // Hàm giúp nút "Không" dịch chuyển ngẫu nhiên khi BẤM VÀO
         function moveButton() {
             const btnWidth = btnNo.offsetWidth;
             const btnHeight = btnNo.offsetHeight;
-            
             const padding = 30;
             const maxX = window.innerWidth - btnWidth - padding;
             const maxY = window.innerHeight - btnHeight - padding;
@@ -234,25 +196,15 @@
             btnNo.style.top = randomY + 'px';
         }
 
-        // Khi bấm vào nút "Không" sẽ lập tức né tránh
-        btnNo.addEventListener('click', (e) => {
-            e.preventDefault();
-            moveButton();
-        });
-        // Hỗ trợ cả trên điện thoại khi chạm vào
-        btnNo.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            moveButton();
-        });
+        btnNo.addEventListener('click', (e) => { e.preventDefault(); moveButton(); });
+        btnNo.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(); });
 
-        // Bấm nút "Có" -> Hiện bảng chọn giờ
         btnYes.addEventListener('click', () => {
             step1.style.display = 'none';
             step2.style.display = 'block';
             createHearts();
         });
 
-        // Chọn giờ hẹn
         timeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 timeBtns.forEach(b => b.classList.remove('selected'));
@@ -262,18 +214,28 @@
             });
         });
 
-        // Xác nhận: Lưu giờ vào kho lưu trữ ẩn của trình duyệt (localStorage) và hiện màn hình cảm ơn
         btnSubmit.addEventListener('click', () => {
             if (!selectedTime) return;
-            
-            // Lưu giờ hẹn vào bộ nhớ máy để trang dashboard của bạn đọc được
-            localStorage.setItem('ngayHenDate', selectedTime);
 
-            step2.style.display = 'none';
-            step3.style.display = 'block';
+            btnSubmit.innerHTML = "Đang gửi tín hiệu yêu thương... ❤️";
+            btnSubmit.disabled = true;
+
+            const templateParams = {
+                time: selectedTime
+            };
+
+            emailjs.send('service_pmb4r1n', 'template_ftoh0oj', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    step2.style.display = 'none';
+                    step3.style.display = 'block';
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    step2.style.display = 'none';
+                    step3.style.display = 'block';
+                });
         });
 
-        // Tạo hiệu ứng trái tim bay
         function createHearts() {
             setInterval(() => {
                 const heart = document.createElement('div');
@@ -283,9 +245,7 @@
                 heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
                 document.body.appendChild(heart);
 
-                setTimeout(() => {
-                    heart.remove();
-                }, 4000);
+                setTimeout(() => { heart.remove(); }, 4000);
             }, 300);
         }
     </script>
