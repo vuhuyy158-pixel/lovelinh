@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Điều Khiển Hẹn Hò ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 45px 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #007e33;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.15rem;
+            color: #444;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .time-box {
+            background: #e8f5e9;
+            border: 2px dashed #4caf50;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 25px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background-color: #ff3366;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(255, 51, 102, 0.3);
+        }
+
+        .refresh-btn {
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .refresh-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Tin Vui Cho Bạn! 🎉</h1>
+        <p>Kết quả lựa chọn của em iu:</p>
+        
+        <div class="time-box" id="displayTime">
+            Đang kiểm tra dữ liệu...
+        </div>
+
+        <div class="status-badge">Trạng thái: Đang đợi phản hồi... ❤️</div>
+        <br>
+        <button class="refresh-btn" onclick="checkData()">Làm mới kết quả 🔄</button>
+    </div>
+
+    <script>
+        function checkData() {
+            // Đọc dữ liệu được lưu ngầm từ máy của người yêu gửi sang
+            const savedTime = localStorage.getItem('ngayHenDate');
+            const displayTimeDiv = document.getElementById('displayTime');
+            const badge = document.querySelector('.status-badge');
+
+            if (savedTime) {
+                displayTimeDiv.innerHTML = `⏰ Lúc ${savedTime} Chủ Nhật`;
+                badge.innerHTML = `Trạng thái: Đã chốt đơn thành công! ❤️`;
+                badge.style.backgroundColor = '#28a745';
+            } else {
+                displayTimeDiv.innerHTML = `⚠️ Chưa có lịch hẹn nào được gửi.`;
+                badge.innerHTML = `Trạng thái: Chưa chọn 😢`;
+                badge.style.backgroundColor = '#dc3545';
+            }
+        }
+
+        // Tự động kiểm tra ngay khi mở trang
+        checkData();
+    </script>
+</body>
+</html>
